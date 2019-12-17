@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2019. Gymshark Limited. All rights Reserved.
+ */
+
 const core = require('@actions/core');
 const github = require('@actions/github');
 const slack = require('slack-notify')(core.getInput('webhook_url'));
@@ -5,29 +9,26 @@ const channel = core.getInput('channel');
 const job = JSON.parse(core.getInput('job'));
 try {
     // Get the JSON webhook payload for the event that triggered the workflow
-
-    //console.log(`The event payload: ${job}`);
-
     let payload;
 
-    if (job.status === "Failure"){
+    if (job.status === 'Failure') {
         payload = {
-            pretext: "Deployment failure",
-            color: "#C0392A",
-            icon: ":red_circle:",
-        }
-    } else if (job.status === "Success"){
+            pretext: 'Deployment failure',
+            color: '#C0392A',
+            icon: ':red_circle:',
+        };
+    } else if (job.status === 'Success') {
         payload = {
-            pretext: "Deployment Success",
-            color: "#27ae60",
-            icon: ":green_circle:",
-        }
-    } else if (job.status === "Cancelled"){
+            pretext: 'Deployment Success',
+            color: '#27ae60',
+            icon: ':green_circle:',
+        };
+    } else if (job.status === 'Cancelled') {
         payload = {
-            pretext: "Deployment Canceled",
-            color: "#FEEFAB",
-            icon: ":yellow_circle:",
-        }
+            pretext: 'Deployment Canceled',
+            color: '#FEEFAB',
+            icon: ':yellow_circle:',
+        };
     }
 
     slack.send({
@@ -45,9 +46,9 @@ try {
                 color: payload.color,
                 fields: [
                     { title: 'Job Status', value: job.status, short: false },
-                ]
-            }
-        ]
+                ],
+            },
+        ],
     });
 } catch (error) {
     core.setFailed(error.message);

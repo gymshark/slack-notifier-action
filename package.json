@@ -1,16 +1,20 @@
 {
-  "name": "slack-notification",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "slack-notifier-action",
+  "version": "1.0.1",
+  "description": "A Github action for posting workflow notifications to Slack.",
+  "main": "src/index.js",
   "scripts": {
+    "build": "ncc build src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Gymshark Engineering (https://github.com/gymshark)",
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.2.0",
     "@actions/github": "^2.0.0",
     "slack-notify": "^0.1.7"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "^0.20.5"
   }
 }
