@@ -1,5 +1,5 @@
-name: 'Slack Notify'
-description: 'Send a slack notification'
+name: 'Slack Notifier'
+description: 'A Github action for posting workflow notifications to Slack.'
 inputs:
   webhook_url:  # id of input
     description: 'webhook url'
@@ -7,3 +7,6 @@ inputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'at-sign'
+  color: 'black'
