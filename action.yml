@@ -1,0 +1,9 @@
+name: 'Slack Notify'
+description: 'Send a slack notification'
+inputs:
+  webhook_url:  # id of input
+    description: 'webhook url'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
