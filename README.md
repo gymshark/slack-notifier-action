@@ -15,3 +15,10 @@ uses: actions/slack-notifier-action@v1
 with:
   webhook_url: 'https://hooks.slack.com/services/ABC123/def456'
 ```
+
+## Build
+
+```bash
+ncc build src/index.js
+```
+

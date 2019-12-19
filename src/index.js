@@ -7,30 +7,26 @@ const github = require('@actions/github');
 const slack = require('slack-notify')(core.getInput('webhook_url'));
 const channel = core.getInput('channel');
 const job = JSON.parse(core.getInput('job'));
+const payloads = {
+    "Failure": {
+        pretext: "Deployment failure",
+        color: "#C0392A",
+        icon: ":red_circle:",
+    },
+    "Success": {
+        pretext: "Deployment Success",
+        color: "#27ae60",
+        icon: ":white_check_mark:",
+    },
+    "Cancelled": {
+        pretext: "Deployment Success",
+        color: "#27ae60",
+        icon: ":warning:",
+    },
+};
+
 try {
-    // Get the JSON webhook payload for the event that triggered the workflow
-    let payload;
-
-    if (job.status === 'Failure') {
-        payload = {
-            pretext: 'Deployment failure',
-            color: '#C0392A',
-            icon: ':red_circle:',
-        };
-    } else if (job.status === 'Success') {
-        payload = {
-            pretext: 'Deployment Success',
-            color: '#27ae60',
-            icon: ':green_circle:',
-        };
-    } else if (job.status === 'Cancelled') {
-        payload = {
-            pretext: 'Deployment Canceled',
-            color: '#FEEFAB',
-            icon: ':yellow_circle:',
-        };
-    }
-
+    let payload = payloads[job.status];
     slack.send({
         icon_emoji: payload.icon,
         username: 'Github Actions',
