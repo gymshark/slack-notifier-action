@@ -5,21 +5,20 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const slack = require('slack-notify')(core.getInput('webhook_url'));
-const channel = core.getInput('channel');
 const job = JSON.parse(core.getInput('job'));
 const payloads = {
-    "Failure": {
-        pretext: "Deployment failure",
+    "failure": {
+        pretext: "Failed",
         color: "#C0392A",
         icon: ":red_circle:",
     },
-    "Success": {
-        pretext: "Deployment Success",
+    "success": {
+        pretext: "Success",
         color: "#27ae60",
         icon: ":white_check_mark:",
     },
-    "Cancelled": {
-        pretext: "Deployment Success",
+    "cancelled": {
+        pretext: "Success",
         color: "#27ae60",
         icon: ":warning:",
     },
