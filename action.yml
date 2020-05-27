@@ -4,6 +4,9 @@ inputs:
   webhook_url:  # id of input
     description: 'webhook url'
     required: true
+  job:
+    description: 'JSON encoded job object from actions'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'

@@ -14,11 +14,12 @@ This action will post the action status to a nominated Slack channel for your en
 uses: actions/slack-notifier-action@v1
 with:
   webhook_url: 'https://hooks.slack.com/services/ABC123/def456'
+  job: ${{ toJson(job) }}
 ```
 
 ## Build
 
 ```bash
-ncc build src/index.js
+yarn build
 ```
 
