@@ -11,10 +11,9 @@ This action will post the action status to a nominated Slack channel for your en
 ## Example usage
 
 ```
-uses: actions/slack-notifier-action@v1
+uses: gymshark/slack-notifier-action@v1.0.2
 with:
   webhook_url: 'https://hooks.slack.com/services/ABC123/def456'
-  job: ${{ toJson(job) }}
 ```
 
 ## Build
